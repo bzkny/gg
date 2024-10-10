@@ -1,16 +1,23 @@
 {
   "name": "design-system",
-  "private": "true",
+  "private": "false",
   "version": "0.1.0",
-  "description": "brand-styles",
-  "main": "index.js",
-  "author": {
-    "name": "Bea Kirkbright"
-  },
+  "description": "mono repo for gg shopify and design system",
+  "author": "Bea Kirkbright",
   "license": "ISC",
+  "main": "index.js",
+  "engines": {
+    "node": ">=16.14.0"
+  },
   "homepage": "https://github.com/bzkny/gg.git#readme",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "shopify hydrogen dev",
+    "build": "shopify hydrogen build",
+    "preview": "shopify hydrogen preview",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx src",
+    "lint-ts": "tsc --noEmit",
+    "test": "WATCH=true vitest",
+    "test:ci": "yarn build -t node && vitest run",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "chromatic": "npx chromatic --project-token=chpt_6c36c87e1db29d9"
@@ -23,7 +30,19 @@
     "url": "https://github.com/bzkny/gg/issues"
   },
   "devDependencies": {
+    "chromatic": "^11.11.0",
     "@chromatic-com/storybook": "^1.6.1",
+    "eslint": "^8.18.0",
+    "eslint-plugin-hydrogen": "^0.12.2",
+    "@netlify/hydrogen-platform": "^1.1.2",
+    "playwright": "^1.22.2",
+    "postcss": "^8.4.14",
+    "postcss-import": "^14.1.0",
+    "postcss-preset-env": "^7.6.0",
+    "prettier": "^2.3.2",
+    "@shopify/cli": "3.15.0",
+    "@shopify/cli-hydrogen": "3.15.0",
+    "@shopify/prettier-config": "^1.1.2",
     "@storybook/addon-essentials": "^8.2.7",
     "@storybook/addon-interactions": "^8.2.7",
     "@storybook/addon-links": "^8.2.7",
@@ -34,8 +53,23 @@
     "@storybook/manager-api": "^8.2.7",
     "@storybook/test": "^8.2.7",
     "@storybook/theming": "^8.2.7",
-    "chromatic": "^11.11.0",
     "storybook": "^8.2.7",
-    "storybook-design-token": "^3.1.0"
+    "storybook-design-token": "^3.1.0",
+    "@tailwindcss/forms": "^0.5.2",
+    "@tailwindcss/typography": "^0.5.2",
+    "tailwindcss": "^3.0.24",
+    "vite": "^2.9.13",
+    "vitest": "^0.15.2"
+  },
+  "prettier": "@shopify/prettier-config",
+  "dependencies": {
+    "@headlessui/react": "^1.7.0",
+    "@shopify/hydrogen": "^1.4.3",
+    "clsx": "^1.1.1",
+    "graphql-tag": "^2.12.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-use": "^17.4.0",
+    "typographic-base": "^1.0.4"
   }
 }
