@@ -1,0 +1,67 @@
+@use 'palette';
+
+//NEW BORDER COLORS = 0
+/**
+* @tokens Borders
+* @presenter Color
+*/
+
+$color-border-primary-brand: #2A73B8; //palette.$color-tertiary;
+$color-border-disabled-brand: #90B4D7; //palette.$color-fourth also $color-text-disabled
+$color-border-tertiary-brand: #90B4D7; //palette.$color-fourth also $color-text-disabled
+
+$color-border-primary-neutral: rgba(0,0,0, .6); //palette.$color-text-tertiary-neutral;
+$color-border-disabled-neutral: rgba(0,0,0, .3); //palette.$color-text-disabled-neutral;
+$color-border-tertiary-neutral: rgba(0,0,0, .2); //palette.$color-text-disabled-neutral;
+
+/**
+* @tokens-end
+*/
+
+@mixin border($width: 2px, $style: solid, $color:palette.$color-tertiary) {
+  border: $width $style $color;
+}
+
+.border-primary-brand {
+  @include border();
+  .disabled, :disabled {
+    @include border($color: $color-border-disabled-neutral);
+  }
+  // &-inverse {
+  //   opacity: .2;
+  // }
+}
+.border-primary-brand-inverse {
+  @include border();
+  &--disabled {
+    opacity: .4;
+  }
+}
+.border-disabled-brand {
+  @include border($color: $color-border-disabled-brand);
+  // background: palette.$color-white;
+}
+
+.border-primary-neutral {
+  @include border($color: $color-border-primary-neutral);
+}
+.border-primary-neutral-inverse {
+  @include border($color: rgba(144,145,147, .8));
+// rgba(37, 39, 42) + rgba(250,250,250, 80%)/2 
+}
+.border-disabled-neutral {
+  @include border($color: $color-border-disabled-neutral);
+  // background: palette.$color-white;
+}
+
+.border-focus-single-line {
+
+}
+
+.border-focus-double-line {
+
+}
+
+.border-focus-dashed-line {
+  @include border($style: dashed);
+}

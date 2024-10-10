@@ -1,0 +1,21 @@
+@use '../helpers';
+@use '../palette';
+
+.btn {
+    border: 1px solid palette.$color-secondary;
+    height: 30px;
+    width: 200px;
+
+    &:disabled, .disabled{
+        background: helpers.disabled();
+    }
+    &:hover, .hover {
+        background: helpers.hover();
+    }
+}
+.btn-border {
+
+    &:disabled, .disabled{
+        background: helpers.disabled();
+    }
+}
